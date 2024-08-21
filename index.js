@@ -23,7 +23,7 @@ app.post('/webhook',
 
     if (event.type == 'checkout.session.completed') {
       const checkout = event.data.object;
-      const orderId = checkout.metaData.orderId;
+      const orderId = checkout.metadata.orderId;
       const orderExist = await Order.findByIdAndUpdate(orderId, { status: 'placed' }, { new: true })
       await Cart.findOneAndUpdate({ user: orderExist.user }, { products: [] }, { new: true })
       for (const product of orderExist.products) {
