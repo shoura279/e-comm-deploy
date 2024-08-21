@@ -19,7 +19,7 @@ app.post('/webhook',
   asyncHandler(async (req, res) => {
     const sig = req.headers['stripe-signature'].toString();
     const stripe = new Stripe('sk_test_51PpaGLP829c5C7AK3uaBUMuIUEqLECKIbtbwqDVIX1LLcgYMPE2y5cuyvERhjKYdHs5eJgEnGp5UNn6IcLB5Ku9B00tygmYZpK')
-    let event = stripe.webhooks.constructEvent(req.body, sig, 'whsec_e72fa9c2231c951259b2a7f9f2a2da8b2490627802ba47934339301e2067b3d8');
+    let event = stripe.webhooks.constructEvent(req.body, sig, 'whsec_KpOJGP7USpDiZYdGtkqHUMSgABqPz9rj');
 
     if (event.type == 'checkout.session.completed') {
       const checkout = event.data.object;
